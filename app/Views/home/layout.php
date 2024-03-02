@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<!--
-Template Name: Gleblu
-Author: <a href="https://www.os-templates.com/">OS Templates</a>
-Author URI: https://www.os-templates.com/
-Copyright: OS-Templates.com
-Licence: Free to use under our free template licence terms
-Licence URI: https://www.os-templates.com/template-terms
--->
+
 <html lang="">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 
@@ -59,41 +52,37 @@ Licence URI: https://www.os-templates.com/template-terms
     <!-- ################################################################################################ -->
     <div class="wrapper row1">
         <header id="header" class="hoc clear">
-            <div id="logo" class="fl_left">
-                <!-- ################################################################################################ -->
+            <!-- <div id="logo" class="fl_left">
                 <h1><a href="index.html">ILMU HUKUM</a></h1>
-                <!-- ################################################################################################ -->
-            </div>
-            <nav id="mainav" class="fl_right">
+            </div> -->
+            <nav id="mainav" class="fl_left" style="margin-left: 250px;">
                 <!-- ################################################################################################ -->
                 <ul class="clear">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a class="drop" href="#">Pages</a>
+                    <li class="active"><a href="index.html">Beranda</a></li>
+                    <li><a class="drop" href="#">Tentang Kami</a>
                         <ul>
-                            <li><a href="pages/gallery.html">Gallery</a></li>
-                            <li><a href="pages/full-width.html">Full Width</a></li>
-                            <li><a href="pages/sidebar-left.html">Sidebar Left</a></li>
-                            <li><a href="pages/sidebar-right.html">Sidebar Right</a></li>
-                            <li><a href="pages/basic-grid.html">Basic Grid</a></li>
-                            <li><a href="pages/font-icons.html">Font Icons</a></li>
+                            <li><a href="pages/gallery.html">Sejarah</a></li>
+                            <li><a href="pages/full-width.html">Visi dan Misi</a></li>
                         </ul>
                     </li>
-                    <li><a class="drop" href="#">Dropdown</a>
+                    <li><a class="drop" href="#">Akademik</a>
                         <ul>
-                            <li><a href="#">Level 2</a></li>
-                            <li><a class="drop" href="#">Level 2 + Drop</a>
-                                <ul>
-                                    <li><a href="#">Level 3</a></li>
-                                    <li><a href="#">Level 3</a></li>
-                                    <li><a href="#">Level 3</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Level 2</a></li>
+                            <li><a href="pages/gallery.html">CPL Prodi</a></li>
+                            <li><a href="pages/full-width.html">Struktur Kurikulum</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Link Text</a></li>
-                    <li><a href="#">Link Text</a></li>
-                    <li><a href="#">Link Text</a></li>
+                    <li><a class="drop" href="#">Kemahasiswaan</a>
+                        <ul>
+                            <li><a href="pages/gallery.html">Alumni</a></li>
+                            <li><a href="pages/full-width.html">Prestasi Mahasiswa</a></li>
+                            <li><a href="pages/full-width.html">Kegiatan Kemahasiswaan</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="drop" href="#">Arsip</a>
+                        <ul>
+                            <li><a href="pages/gallery.html">Unduh Sertifikat Akreditasi</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <!-- ################################################################################################ -->
             </nav>
