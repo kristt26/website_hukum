@@ -28,7 +28,7 @@
 <body id="page-top" ng-controller="indexController">
     <div id="wrapper">
         <!-- Sidebar -->
-        <?= view('layout/menu') ?>
+        <?= view('admin/layout/menu') ?>
         <!-- Sidebar -->
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">

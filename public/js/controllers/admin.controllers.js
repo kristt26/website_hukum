@@ -455,7 +455,7 @@ function videoController($scope, videoServices, pesan, helperServices) {
     }
 }
 
-function pengajarController($scope, pengajarServices, prodiServices, pesan, helperServices) {
+function pengajarController($scope, pengajarServices, pesan, helperServices) {
     $scope.setTitle = "Berita";
     $scope.$emit("SendUp", $scope.setTitle);
     $scope.datas = {};
@@ -479,18 +479,6 @@ function pengajarController($scope, pengajarServices, prodiServices, pesan, help
         autosave_restore_when_empty: false,
         autosave_retention: '2m',
         image_advtab: true,
-        link_list: [
-            { title: 'My page 1', value: 'https://www.tiny.cloud' },
-            { title: 'My page 2', value: 'http://www.moxiecode.com' }
-        ],
-        image_list: [
-            { title: 'My page 1', value: 'http://localhost/admin/berita' },
-            { title: 'My page 2', value: 'http://www.moxiecode.com' }
-        ],
-        image_class_list: [
-            { title: 'None', value: '' },
-            { title: 'Some class', value: 'class-name' }
-        ],
         importcss_append: true,
         templates: [
             { title: 'New Table', description: 'creates a new table', content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>' },
@@ -517,9 +505,6 @@ function pengajarController($scope, pengajarServices, prodiServices, pesan, help
     };
     pengajarServices.get().then((res) => {
         $scope.datas = res;
-    })
-    prodiServices.get().then((res)=>{
-        $scope.prodi = res;
     })
     $scope.save = () => {
         pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {

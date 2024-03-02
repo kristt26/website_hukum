@@ -744,7 +744,7 @@ function videoServices($http, $q, helperServices, AuthService, pesan) {
 }
 
 function pengajarServices($http, $q, helperServices, AuthService, pesan) {
-    var controller = helperServices.url + 'admin/pengajar/';
+    var controller = helperServices.url + 'pengajar/';
     var service = {};
     service.data = [];
     return {
