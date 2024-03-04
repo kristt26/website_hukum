@@ -13,18 +13,18 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item" ng-class="{'active': title=='Prodi'}">
-                <a class="nav-link" href="<?= base_url() ?>/admin/prodi">
+                <a class="nav-link" href="prodi">
                     <i class="fas fa-book"></i>
                     <span>Program Studi</span></a>
             </li>
             <li class="nav-item" ng-class="{'active': title=='Pengumuman'}">
-                <a class="nav-link" href="<?= base_url() ?>/admin/pengumuman">
+                <a class="nav-link" href="pengumuman">
                     <i class="fas fa-bullhorn"></i>
                     <span>Pengumuman</span>
                 </a>
             </li>
             <li class="nav-item" ng-class="{'active': title=='Pengajar'}">
-                <a class="nav-link" href="<?= base_url() ?>/admin/pengajar">
+                <a class="nav-link" href="pengajar">
                     <i class="fas fa-users"></i>
                     <span>Pengajar</span>
                 </a>
@@ -36,11 +36,11 @@
                 </a>
                 <div id="setView" class="collapse" ng-class="{'show': collapse=='Setting'}" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" ng-class="{'active': title=='Slider'}" href="<?= base_url() ?>/admin/slide">Slide</a>
-                        <a class="collapse-item" ng-class="{'active': title=='Galery'}" href="<?= base_url() ?>/admin/galeri">Galery</a>
-                        <a class="collapse-item" ng-class="{'active': title=='Berita'}" href="<?= base_url() ?>/admin/berita">Berita</a>
-                        <a class="collapse-item" ng-class="{'active': title=='Kerjasama'}" href="<?= base_url() ?>/admin/kerjasama">Kerjasama</a>
-                        <a class="collapse-item" ng-class="{'active': title=='Video'}" href="<?= base_url() ?>/admin/video">Video</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Slider'}" href="slide">Slide</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Galery'}" href="galeri">Galery</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Berita'}" href="berita">Berita</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Kerjasama'}" href="kerjasama">Kerjasama</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Video'}" href="video">Video</a>
                     </div>
                 </div>
             </li>

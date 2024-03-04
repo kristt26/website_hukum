@@ -17,3 +17,10 @@ $routes->group('pengajar', static function($routes){
     $routes->put('put', 'Admin\Pengajar::put');
     $routes->delete('delete', 'Admin\Pengajar::delete');
 });
+$routes->group('pengumuman', function($item){
+    $item->get('/', 'Admin\Pengumuman::index');
+    $item->get('read', 'Admin\Pengumuman::read');
+    $item->post('post', 'Admin\Pengumuman::post');
+    $item->put('put', 'Admin\Pengumuman::put');
+    $item->delete('delete/(:num)', 'Admin\Pengumuman::delete/$1');
+});

@@ -549,7 +549,7 @@ function prodiServices($http, $q, helperServices, AuthService, pesan) {
 }
 
 function pengumumanServices($http, $q, helperServices, AuthService, pesan) {
-    var controller = helperServices.url + 'admin/pengumuman/';
+    var controller = helperServices.url + 'pengumuman/';
     var service = {};
     service.data = [];
     return {
