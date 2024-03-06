@@ -29,20 +29,53 @@
                     <span>Pengajar</span>
                 </a>
             </li>
-            <li class="nav-item" ng-class="{'active': collapse=='Setting'}">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setView" aria-expanded="true" aria-controls="setView">
-                    <i class="fab fa-fw fa-wpforms"></i>
-                    <span>Set View</span>
+            <li class="nav-item" ng-class="{'active': title=='Tentang'}">
+                <a class="nav-link" href="tentang">
+                    <i class="fas fa-users"></i>
+                    <span>Tentang</span>
                 </a>
-                <div id="setView" class="collapse" ng-class="{'show': collapse=='Setting'}" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+            </li>
+            <li class="nav-item" ng-class="{'active': collapse=='Akademik'}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setView" aria-expanded="true" aria-controls="setView">
+                    <i class="fas fa-book"></i>
+                    <span>Akademik</span>
+                </a>
+                <div id="setView" class="collapse" ng-class="{'show': collapse=='Akademik'}" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" ng-class="{'active': title=='Slider'}" href="slide">Slide</a>
-                        <a class="collapse-item" ng-class="{'active': title=='Galery'}" href="galeri">Galery</a>
-                        <a class="collapse-item" ng-class="{'active': title=='Berita'}" href="berita">Berita</a>
-                        <a class="collapse-item" ng-class="{'active': title=='Kerjasama'}" href="kerjasama">Kerjasama</a>
-                        <a class="collapse-item" ng-class="{'active': title=='Video'}" href="video">Video</a>
+                        <a class="collapse-item" ng-class="{'active': title=='CPL'}" href="cpl">CPL</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Kurikulum'}" href="kurikulum">Kurikulum</a>
                     </div>
                 </div>
+            </li>
+            <li class="nav-item" ng-class="{'active': collapse=='Kemahasiswaan'}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setView" aria-expanded="true" aria-controls="setView">
+                    <i class="fas fa-book"></i>
+                    <span>Kemahasiswaan</span>
+                </a>
+                <div id="setView" class="collapse" ng-class="{'show': collapse=='Kemahasiswaan'}" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" ng-class="{'active': title=='Prestasi'}" href="prestasi">Prestasi Mahasiswa</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Kegiatan Kemahasiswaan'}" href="kegiatan">Kegiatan Mahasiswa</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item" ng-class="{'active': title=='Arsip'}">
+                <a class="nav-link" href="arsip">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Arsip</span>
+                </a>
+            </li>
+            <li class="nav-item" ng-class="{'active': title=='Slider'}">
+                <a class="nav-link" href="slider">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Slider</span>
+                </a>
+            </li>
+            <li class="nav-item" ng-class="{'active': title=='Profile Lulusan'}">
+                <a class="nav-link" href="lulusan">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Profile Lulusan</span>
+                </a>
             </li>
             <hr class="sidebar-divider">
             <div class="version" id="version-ruangadmin"></div>

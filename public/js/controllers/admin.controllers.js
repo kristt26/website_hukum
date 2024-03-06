@@ -5,10 +5,16 @@ angular.module('adminctrl', [])
     .controller('galeriController', galeriController)
     .controller('beritaController', beritaController)
     .controller('kerjasamaController', kerjasamaController)
-    .controller('prodiController', prodiController)
+    .controller('cplController', cplController)
     .controller('pengumumanController', pengumumanController)
+    .controller('tentangController', tentangController)
     .controller('videoController', videoController)
     .controller('pengajarController', pengajarController)
+    .controller('kurikulumController', kurikulumController)
+    .controller('prestasiController', prestasiController)
+    .controller('kegiatanController', kegiatanController)
+    .controller('arsipController', arsipController)
+    .controller('lulusanController', lulusanController)
     ;
 
 function dashboardController($scope, dashboardServices) {
@@ -61,19 +67,6 @@ function sliderController($scope, slideServices, pesan, helperServices) {
 
     $scope.edit = (item) => {
         $scope.model = angular.copy(item);
-        document.getElementById("judul").focus();
-    }
-
-    $scope.delete = (param) => {
-        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
-            slideServices.deleted(param).then(res => {
-                pesan.Success("Berhasil menghapus data");
-            })
-        });
-    }
-
-    $scope.subKlasifikasi = (param) => {
-        document.location.href = helperServices.url + "admin/sub_klasifikasi/data/" + param.id;
     }
 }
 
@@ -289,29 +282,25 @@ function kerjasamaController($scope, kerjasamaServices, pesan, helperServices) {
     }
 }
 
-function prodiController($scope, prodiServices, pesan, helperServices) {
-    $scope.setTitle = "Prodi";
+function cplController($scope, cplServices, unsurServices, pesan, helperServices) {
+    $scope.setTitle = "CPL";
     $scope.$emit("SendUp", $scope.setTitle);
     $scope.datas = {};
     $scope.model = {};
-    $scope.tinymceOptions = {
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount code',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight alignleft aligncenter alignright | numlist bullist indent outdent | emoticons charmap | removeformat | code'
-    };
-    prodiServices.get().then((res) => {
+    cplServices.get().then((res) => {
         $scope.datas = res;
     })
     $scope.save = () => {
         pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
             $.LoadingOverlay("show");
             if ($scope.model.id) {
-                prodiServices.put($scope.model).then(res => {
+                cplServices.put($scope.model).then(res => {
                     $scope.model = {};
                     pesan.Success("Berhasil mengubah data");
                     $.LoadingOverlay("hide");
                 })
             } else {
-                prodiServices.post($scope.model).then(res => {
+                cplServices.post($scope.model).then(res => {
                     $scope.model = {};
                     pesan.Success("Berhasil menambah data");
                     $.LoadingOverlay("hide");
@@ -320,8 +309,17 @@ function prodiController($scope, prodiServices, pesan, helperServices) {
         })
     }
 
+    $scope.tambahUnsur = (param)=>{
+        unsurServices.post(param).then(res=>{
+            $scope.datas.unsur.push(res);
+            pesan.Success("Berhasil menambah unsur");
+            $("#unsur").modal('hide');
+            param = {};
+        })
+    }
+
     $scope.ubah = (param) => {
-        prodiServices.put(param).then(res => {
+        cplServices.put(param).then(res => {
             $scope.model = {};
             pesan.Success("Berhasil mengubah data");
         })
@@ -339,7 +337,7 @@ function prodiController($scope, prodiServices, pesan, helperServices) {
 
     $scope.delete = (param) => {
         pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
-            prodiServices.deleted(param).then(res => {
+            cplServices.deleted(param).then(res => {
                 pesan.Success("Berhasil menghapus data");
             })
         });
@@ -397,6 +395,65 @@ function pengumumanController($scope, pengumumanServices, pesan, helperServices)
     $scope.delete = (param) => {
         pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
             pengumumanServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
+
+function tentangController($scope, tentangServices, pesan, helperServices) {
+    $scope.setTitle = "Tentang";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    $scope.tinymceOptions = {
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount code',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight alignleft aligncenter alignright | numlist bullist indent outdent | emoticons charmap | removeformat | code'
+    };
+    tentangServices.get().then((res) => {
+        $scope.datas = res;
+    })
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                tentangServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $("#tambah").modal('hide');
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                tentangServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $("#tambah").modal('hide');
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
+
+    $scope.ubah = (param) => {
+        tentangServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
+
+    $scope.show = (param) => {
+        console.log(param);
+    }
+
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+        $("#tambah").modal('show');
+        document.getElementById("sejarah").focus();
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            tentangServices.deleted(param).then(res => {
                 pesan.Success("Berhasil menghapus data");
             })
         });
@@ -550,4 +607,302 @@ function pengajarController($scope, pengajarServices, pesan, helperServices) {
         });
     }
 }
+
+function kurikulumController($scope, kurikulumServices, pesan, helperServices) {
+    $scope.setTitle = "Prodi";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    kurikulumServices.get().then((res) => {
+        $scope.datas = res;
+    })
+
+    $scope.tambahJenis = (param)=>{
+        kurikulumServices.jenis(param).then(res=>{
+            $scope.datas.jenis.push(res);
+            pesan.Success("Berhasil menambah jenis");
+            $("#jenis").modal('hide');
+            $scope.itemJenis = {};
+        })
+    }
+
+    $scope.tambahKurikulum = (param)=>{
+        kurikulumServices.kurikulum(param).then(res=>{
+            $scope.datas.kurikulum.push(res);
+            pesan.Success("Berhasil menambah kurikulum");
+            $("#kurikulum").modal('hide');
+            $scope.itemKurikulum = {};
+        })
+    }
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                kurikulumServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                kurikulumServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
+
+    $scope.ubah = (param) => {
+        kurikulumServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
+
+    $scope.show = (param) => {
+        console.log(param);
+    }
+
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+        $scope.jenis = $scope.datas.jenis.find(x=>x.id == item.jenis_id);
+        $scope.kurikulum = $scope.datas.kurikulum.find(x=>x.id == item.kurikulum_id);
+        // $("#modelId").modal('show');
+        document.getElementById("judul").focus();
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            kurikulumServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
+
+function prestasiController($scope, prestasiServices, pesan, helperServices) {
+    $scope.setTitle = "Prestasi";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    $scope.tinymceOptions = {
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount code',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight alignleft aligncenter alignright | numlist bullist indent outdent | emoticons charmap | removeformat | code'
+    };
+    prestasiServices.get().then((res) => {
+        $scope.datas = res;
+    })
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                prestasiServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $("#tambah").modal('hide');
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                prestasiServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $("#tambah").modal('hide');
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
+
+    $scope.ubah = (param) => {
+        prestasiServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
+
+    $scope.show = (param) => {
+        console.log(param);
+    }
+
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+        // $("#tambah").modal('show');
+        document.getElementById("prestasi").focus();
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            prestasiServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
+
+function kegiatanController($scope, kegiatanServices, pesan, helperServices) {
+    $scope.setTitle = "Kegiatan";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    $scope.tinymceOptions = {
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount code',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight alignleft aligncenter alignright | numlist bullist indent outdent | emoticons charmap | removeformat | code'
+    };
+    kegiatanServices.get().then((res) => {
+        $scope.datas = res;
+    })
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                kegiatanServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $("#tambah").modal('hide');
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                kegiatanServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $("#tambah").modal('hide');
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
+
+    $scope.ubah = (param) => {
+        kegiatanServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
+
+    $scope.show = (param) => {
+        console.log(param);
+    }
+
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+        // $("#tambah").modal('show');
+        document.getElementById("prestasi").focus();
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            kegiatanServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
+
+function arsipController($scope, arsipServices, pesan, helperServices) {
+    $scope.setTitle = "Arsip";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    arsipServices.get().then((res) => {
+        $scope.datas = res;
+    })
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                arsipServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $("#tambah").modal('hide');
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                arsipServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $("#tambah").modal('hide');
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
+
+    $scope.ubah = (param) => {
+        arsipServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
+
+    $scope.show = (param) => {
+        console.log(param);
+    }
+
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+        // $("#tambah").modal('show');
+        document.getElementById("prestasi").focus();
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            arsipServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
+
+function lulusanController($scope, lulusanServices, pesan, helperServices) {
+    $scope.setTitle = "Profile Lulusan";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    lulusanServices.get().then((res) => {
+        $scope.datas = res;
+    })
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                lulusanServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                lulusanServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
+
+    $scope.ubah = (param) => {
+        lulusanServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
+
+    $scope.show = (param) => {
+        console.log(param);
+    }
+
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            lulusanServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
+
 

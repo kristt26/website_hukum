@@ -61,7 +61,7 @@ class Pengajar extends BaseController
     {
         $item = $this->pengajar->where('id', $id)->first();
         $this->pengajar->delete($id);
-        unlink('assets/berkas/pengajar/'.$item->gambar);
+        unlink('assets/berkas/pengajar/'.$item->foto);
         return $this->respondDeleted(true);
     }
 }

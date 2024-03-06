@@ -24,6 +24,11 @@ angular.module('apps', [
     // }])
     .controller('indexController', indexController)
     .directive('emaudio', emaudio)
+    .filter('trustAsHTML', ['$sce', function ($sce) {
+        return function (text) {
+            return $sce.trustAsHtml(text);
+        };
+    }])
     // .directive('dynamic', ['$compile', function ($compile) {
     //     return {
     //       restrict: 'A',
@@ -36,7 +41,7 @@ angular.module('apps', [
     //       }
     //     };
     //   }])
-;
+    ;
 
 
 function indexController($scope, helperServices, dashboardServices) {
@@ -50,8 +55,11 @@ function indexController($scope, helperServices, dashboardServices) {
         $scope.header = data;
         $scope.breadcrumb = data;
         $scope.title = data;
-        if(data=='Slider' || data=='Galery' || data=='Berita' || data=='Kerjasama' || data=='Video')
-            $scope.collapse = 'Setting';
+        if (data == 'CPL' || data == 'Kurikulum')
+            $scope.collapse = 'Akademik';
+        else if(data == 'Prestasi' || data == 'Kegiatan'){
+            $scope.collapse = 'Kemahasiswaan';
+        }
         $.LoadingOverlay("hide");
     });
     $scope.$on("send", function (evt, data) {
@@ -61,7 +69,7 @@ function indexController($scope, helperServices, dashboardServices) {
     //     $scope.layanan = res;
     //     $scope.menuLayanan = res.baptis+res.sidi+res.nikah;
     // })
-    
+
 }
 
 function emaudio() {

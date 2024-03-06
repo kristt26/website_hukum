@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CplModel extends Model
+class UnsurModel extends Model
 {
-    protected $table            = 'cpl';
+    protected $table            = 'unsur';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['unsur_id', 'kode', 'cpl'];
+    protected $allowedFields    = ['unsur'];
 
     protected bool $allowEmptyInserts = false;
 }

@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TetangModel extends Model
+class SliderModel extends Model
 {
-    protected $table            = 'tentang';
+    protected $table            = 'slider';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['sejarah', 'visi', 'misi'];
+    protected $allowedFields    = ['text','desc', 'file'];
 
     protected bool $allowEmptyInserts = false;
 }

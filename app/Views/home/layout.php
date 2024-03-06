@@ -95,14 +95,8 @@
         <div id="pageintro" class="hoc clear">
             <!-- ################################################################################################ -->
             <article>
-                <h3 class="heading">Pellentesque risus nulla</h3>
-                <p>Fringilla sed posuere et dignissim non ipsum cras euismod urna non neque auctor dignissim nulla mattis purus donec sed lorem eget nibh sagittis</p>
-                <footer>
-                    <ul class="nospace inline pushright">
-                        <li><a class="btn" href="#">Dictum aenean</a></li>
-                        <li><a class="btn inverse" href="#">Nunc molestie</a></li>
-                    </ul>
-                </footer>
+                <h3 class="heading"><?= $slide['text'] ?></h3>
+                <p><?= $slide['desc'] ?></p>
             </article>
             <!-- ################################################################################################ -->
         </div>
@@ -112,61 +106,20 @@
             <!-- main body -->
             <!-- ################################################################################################ -->
             <div class="center btmspace-80">
-                <h6 class="heading underline font-x2">Vivamus faucibus aliquam</h6>
+                <h6 class="heading underline font-x2">Profile Lulusan</h6>
             </div>
             <ul class="nospace group overview btmspace-80">
-                <li class="one_third">
-                    <article>
-                        <div class="clear"><a href="#"><i class="fas fa-motorcycle"></i></a>
-                            <h6 class="heading">Eleifend augue</h6>
-                        </div>
-                        <p>Sit amet turpis nulla congue augue lectus quis est ante non mi fusce euismod etiam augue aenean ullamcorper.</p>
-                    </article>
-                </li>
-                <li class="one_third">
-                    <article>
-                        <div class="clear"><a href="#"><i class="fas fa-newspaper"></i></a>
-                            <h6 class="heading">Consectetuer euismod</h6>
-                        </div>
-                        <p>Neque pellentesque bibendum duis ut est quis nisl consequat gravida nulla facilisi nullam feugiat mauris enim.</p>
-                    </article>
-                </li>
-                <li class="one_third">
-                    <article>
-                        <div class="clear"><a href="#"><i class="fas fa-paper-plane"></i></a>
-                            <h6 class="heading">Condimentum vitae</h6>
-                        </div>
-                        <p>Ut luctus velit vel eleifend luctus quam ante interdum nibh non sollicitudin enim mi viverra est aenean blandit.</p>
-                    </article>
-                </li>
-                <li class="one_third">
-                    <article>
-                        <div class="clear"><a href="#"><i class="fas fa-eye"></i></a>
-                            <h6 class="heading">Praesent elementum</h6>
-                        </div>
-                        <p>Fusce ut felis nulla facilisi aliquam erat volutpat morbi fermentum mauris a nunc ut non lectus nunc aliquam est.</p>
-                    </article>
-                </li>
-                <li class="one_third">
-                    <article>
-                        <div class="clear"><a href="#"><i class="fas fa-leaf"></i></a>
-                            <h6 class="heading">Posuere curabitur</h6>
-                        </div>
-                        <p>Non nisi sed erat diam hendrerit ut auctor sed vulputate at purus vestibulum eget lorem at tortor tristique.</p>
-                    </article>
-                </li>
-                <li class="one_third">
-                    <article>
-                        <div class="clear"><a href="#"><i class="fas fa-power-off"></i></a>
-                            <h6 class="heading">Malesuada fames</h6>
-                        </div>
-                        <p>Semper nulla adipiscing mi sed rutrum fringilla mauris libero posuere lectus eleifend pretium purus vestibulum.</p>
-                    </article>
-                </li>
+                <?php foreach ($lulusan as $item) : ?>
+                    <li class="one_third">
+                        <article>
+                            <div class="clear"><a href="#"><?= $item->icon ?></a>
+                                <h6 class="heading"><?= $item->profile ?></h6>
+                            </div>
+                            <p><?= $item->desc ?></p>
+                        </article>
+                    </li>
+                <?php endforeach; ?>
             </ul>
-            <footer class="center"><a class="btn" href="#">Semper ullamcorper</a></footer>
-            <!-- ################################################################################################ -->
-            <!-- / main body -->
             <div class="clear"></div>
         </main>
     </div>
@@ -177,29 +130,16 @@
         <section class="hoc container clear">
             <!-- ################################################################################################ -->
             <div class="center btmspace-80">
-                <h6 class="heading underline font-x2">Eros cum sociis natoque</h6>
+                <h6 class="heading underline font-x2">Dosen Pengajar</h6>
             </div>
             <ul class="nospace group">
-                <li class="one_quarter first">
-                    <figure class="fixwidth"><a class="imgover btmspace-30" href="#"><img src="home/images/demo/348x261.png" alt=""></a>
-                        <figcaption class="bold uppercase center">Penatibus magnis</figcaption>
-                    </figure>
-                </li>
-                <li class="one_quarter">
-                    <figure class="fixwidth"><a class="imgover btmspace-30" href="#"><img src="home/images/demo/348x261.png" alt=""></a>
-                        <figcaption class="bold uppercase center">Parturient montes</figcaption>
-                    </figure>
-                </li>
-                <li class="one_quarter">
-                    <figure class="fixwidth"><a class="imgover btmspace-30" href="#"><img src="home/images/demo/348x261.png" alt=""></a>
-                        <figcaption class="bold uppercase center">Nascetur ridiculus</figcaption>
-                    </figure>
-                </li>
-                <li class="one_quarter">
-                    <figure class="fixwidth"><a class="imgover btmspace-30" href="#"><img src="home/images/demo/348x261.png" alt=""></a>
-                        <figcaption class="bold uppercase center">Aliquam enim donec</figcaption>
-                    </figure>
-                </li>
+                <?php foreach ($pengajar as $item) : ?>
+                    <li class="one_quarter first">
+                        <figure class="fixwidth"><a class="imgover btmspace-30" href="#"><img src="assets/berkas/pengajar/<?= $item->file ?>" alt=""></a>
+                            <figcaption class="bold uppercase center"><?= $item->nama?></figcaption>
+                        </figure>
+                    </li>
+                <?php endforeach; ?>
             </ul>
             <!-- ################################################################################################ -->
         </section>
@@ -211,7 +151,7 @@
         <section class="hoc container clear">
             <!-- ################################################################################################ -->
             <div class="center btmspace-80">
-                <h6 class="heading underline font-x2">Integer sodales ultrices</h6>
+                <h6 class="heading underline font-x2">Testimoni Mahasiswa</h6>
             </div>
             <ul id="testimonials" class="nospace group btmspace-80">
                 <li class="one_half first">
