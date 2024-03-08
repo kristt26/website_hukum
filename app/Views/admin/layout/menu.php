@@ -3,7 +3,7 @@
                 <div class="sidebar-brand-icon">
                     <img src="<?= base_url() ?>/assets/img/logo.png">
                 </div>
-                <div class="sidebar-brand-text mx-3">USN Papua</div>
+                <div class="sidebar-brand-text mx-3">HUKUM</div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
@@ -12,11 +12,11 @@
                     <span>Dashboard</span></a>
             </li>
             <hr class="sidebar-divider">
-            <li class="nav-item" ng-class="{'active': title=='Prodi'}">
+            <!-- <li class="nav-item" ng-class="{'active': title=='Prodi'}">
                 <a class="nav-link" href="prodi">
                     <i class="fas fa-book"></i>
                     <span>Program Studi</span></a>
-            </li>
+            </li> -->
             <li class="nav-item" ng-class="{'active': title=='Pengumuman'}">
                 <a class="nav-link" href="pengumuman">
                     <i class="fas fa-bullhorn"></i>
@@ -36,11 +36,11 @@
                 </a>
             </li>
             <li class="nav-item" ng-class="{'active': collapse=='Akademik'}">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setView" aria-expanded="true" aria-controls="setView">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#akademik" aria-expanded="true" aria-controls="akademik">
                     <i class="fas fa-book"></i>
                     <span>Akademik</span>
                 </a>
-                <div id="setView" class="collapse" ng-class="{'show': collapse=='Akademik'}" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+                <div id="akademik" class="collapse" ng-class="{'show': collapse=='Akademik'}" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" ng-class="{'active': title=='CPL'}" href="cpl">CPL</a>
                         <a class="collapse-item" ng-class="{'active': title=='Kurikulum'}" href="kurikulum">Kurikulum</a>
@@ -48,16 +48,22 @@
                 </div>
             </li>
             <li class="nav-item" ng-class="{'active': collapse=='Kemahasiswaan'}">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setView" aria-expanded="true" aria-controls="setView">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#kemahasiswaan" aria-expanded="true" aria-controls="kemahasiswaan">
                     <i class="fas fa-book"></i>
                     <span>Kemahasiswaan</span>
                 </a>
-                <div id="setView" class="collapse" ng-class="{'show': collapse=='Kemahasiswaan'}" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+                <div id="kemahasiswaan" class="collapse" ng-class="{'show': collapse=='Kemahasiswaan'}" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" ng-class="{'active': title=='Prestasi'}" href="prestasi">Prestasi Mahasiswa</a>
                         <a class="collapse-item" ng-class="{'active': title=='Kegiatan Kemahasiswaan'}" href="kegiatan">Kegiatan Mahasiswa</a>
                     </div>
                 </div>
+            </li>
+            <li class="nav-item" ng-class="{'active': title=='Berita'}">
+                <a class="nav-link" href="berita">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Berita</span>
+                </a>
             </li>
             <li class="nav-item" ng-class="{'active': title=='Arsip'}">
                 <a class="nav-link" href="arsip">

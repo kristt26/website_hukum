@@ -35,6 +35,7 @@ class Prestasi extends BaseController
         $item = [
             'prestasi'=>$param->prestasi,
             'desc'=>$param->desc,
+            'tanggal'=>$param->tanggal,
             'foto'=>$this->code->decodebase64($param->berkas->base64,'akademik')
         ];
         $this->prestasi->insert($item);
@@ -48,6 +49,7 @@ class Prestasi extends BaseController
         $item = [
             'id' => $param->id,
             'prestasi'=>$param->prestasi,
+            'tanggal'=>$param->tanggal,
             'desc'=>$param->desc,
         ];
         if(isset($param->berkas)){

@@ -26,7 +26,7 @@ class Auth extends BaseController
                 'is_login'  => true
             ];
             session()->set($ses);
-            return redirect()->to(base_url('admin'));
+            return redirect()->to(base_url('beranda'));
         }else{
             return redirect()->to(base_url('auth'));
         }

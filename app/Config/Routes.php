@@ -6,6 +6,9 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
+$routes->get('auth', 'Auth::index');
+$routes->add('auth/login', 'Auth::login');
+$routes->add('auth/logout', 'Auth::logout');
 
 $routes->group('beranda', static function($routes){
     $routes->get('', 'Admin\Home::index');
@@ -30,6 +33,13 @@ $routes->group('tentang', function($item){
     $item->post('post', 'Admin\Tentang::post');
     $item->put('put', 'Admin\Tentang::put');
     $item->delete('delete/(:num)', 'Admin\Tentang::delete/$1');
+});
+$routes->group('berita', function($item){
+    $item->get('/', 'Admin\Berita::index');
+    $item->get('read', 'Admin\Berita::read');
+    $item->post('post', 'Admin\Berita::post');
+    $item->put('put', 'Admin\Berita::put');
+    $item->delete('delete/(:num)', 'Admin\Berita::delete/$1');
 });
 $routes->group('cpl', function($item){
     $item->get('/', 'Admin\Cpl::index');
@@ -84,3 +94,12 @@ $routes->group('lulusan', function($item){
     $item->put('put', 'Admin\Lulusan::put');
     $item->delete('delete/(:num)', 'Admin\Lulusan::delete/$1');
 });
+
+// Information
+$routes->get('detail_berita/(:any)', 'Home::berita/$1');
+$routes->get('sejarah', 'Home::sejarah');
+$routes->get('visi_misi', 'Home::visi_misi');
+$routes->get('cpl_prodi', 'Home::cpl');
+$routes->get('matakuliah', 'Home::matakuliah');
+$routes->get('prestasi_mahasiswa', 'Home::prestasi');
+$routes->get('kegiatan_mahasiswa', 'Home::kegiatan');

@@ -35,6 +35,7 @@ class Kegiatan extends BaseController
         $item = [
             'kegiatan'=>$param->kegiatan,
             'desc'=>$param->desc,
+            'tanggal'=>$param->tanggal,
             'foto'=>$this->code->decodebase64($param->berkas->base64,'akademik')
         ];
         $this->kegiatan->insert($item);
@@ -48,6 +49,7 @@ class Kegiatan extends BaseController
         $item = [
             'id' => $param->id,
             'kegiatan'=>$param->kegiatan,
+            'tanggal'=>$param->tanggal,
             'desc'=>$param->desc,
         ];
         if(isset($param->berkas)){

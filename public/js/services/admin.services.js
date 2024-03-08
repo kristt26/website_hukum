@@ -260,7 +260,7 @@ function galeriServices($http, $q, helperServices, AuthService, pesan) {
 }
 
 function beritaServices($http, $q, helperServices, AuthService, pesan) {
-    var controller = helperServices.url + 'admin/berita/';
+    var controller = helperServices.url + 'berita/';
     var service = {};
     service.data = [];
     return {
